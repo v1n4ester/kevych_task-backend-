@@ -19,10 +19,14 @@ app.get("/api/trips", async (req, res) => {
         const trips = await Trip.find();
 
         function compare(a, b) {
-            if(a.timeStart === b.timeStart){
-                return a.timeArrive - b.timeArrive
-            }
-            return a.timeStart - b.timeStart
+          const aTimeS = new Date(a.timeStart).getTime()
+          const bTimeS = new Date(b.timeStart).getTime()
+          if(a.timeStart === b.timeStart){
+            const aTimeA = new Date(a.timeArrive).getTime()
+            const bTimeA = new Date(b.timeArrive).getTime()
+              return aTimeA - bTimeA
+          }
+          return aTimeS - bTimeS
           }
 
         const result = trips.sort(compare)
