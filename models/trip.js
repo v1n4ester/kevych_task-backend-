@@ -10,7 +10,7 @@ const TripShema = new Schema({
         required: true
     },
     timeStart: {
-        type: String,
+        type: Date,
         required: true
     },
     timeArrive: {
